@@ -1,11 +1,13 @@
 
 const debug = require("debug")("tw-bot");
+const fs  = require("fs");
+const async = require("async");
 const Twitter = require("twitter");
 const TelegramBot = require('node-telegram-bot-api');
-const async = require("async");
 
 // leemos nuestra configuración
-const config = require("./config.js");
+const CONFIG_FILE_NAME = process.env.CONFIG_FILE_NAME || "/run/secrets/agendadigital_bot";
+const config = JSON.parse(fs.readFileSync(CONFIG_FILE_NAME, "utf8"));
 
 // creamos la interfaz con Telegram
 const bot = new TelegramBot(config.telegram.token, {polling: true});
