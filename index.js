@@ -43,18 +43,6 @@ client.stream('statuses/filter', {track: 'AgendaDigital'}, stream => {
           return;
         };
 
-        // if (!tweet.quoted_status && !tweet.retweeted_status) {
-        //   publicar = true;
-        // }
-        // else { // RT
-        //   if (!!tweet.quoted_status) { // RT con comentario
-        //     publicar = config.publishQuoted;
-        //   }
-        //   else { // RT sin comentario
-        //     publicar = config.publishRetweeted;
-        //   }
-        // }
-
         // enviamos a la cola para publicación
          botQueue.push({message, id: tweet.id});
     });
