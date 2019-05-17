@@ -1,0 +1,6 @@
+config.js
+getUpdate*
+package-lock.json
+yarn.lock
+.DS_Store
+node_modules
